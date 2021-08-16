@@ -45,7 +45,7 @@ export const landingStyle = {
 
 export const colors = {
       backgroundDark: 'hsl(0, 0%, 26%)',
-      backgroundLight: 'hsl(0, 0%, 86%)',
+      backgroundLight: 'hsl(0, 0%, 96%)',
       textLight: 'hsl(0, 0%, 100%)',
       textLightShade: 'hsl(0, 0%, 90%)',
       textDark: 'hsl(0, 0%, 20%)',

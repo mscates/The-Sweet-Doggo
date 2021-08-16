@@ -10,11 +10,10 @@ import {
 } from "../../helpers";
 import { Input } from "../../common";
 import { Link } from "react-router-dom";
-import { colors } from '../../helpers'
-
+import { colors } from "../../helpers";
 
 const Form = () => {
-  const { primary, textLight, textLightShade } = colors
+  const { primary, textLight, textLightShade } = colors;
   return (
     <div>
       <PadBox as="section" padding="lg">
@@ -25,6 +24,7 @@ const Form = () => {
               type="text"
               size=".7rem"
               border="1px solid hsl(0, 0%, 50%)"
+              background="hsl(0, 0%, 16%)"
             />
           </StyledInputGroup>
           <StyledInputGroup color={textLightShade} label="Password">
@@ -32,6 +32,7 @@ const Form = () => {
               type="text"
               size=".7rem"
               border="1px solid hsl(0, 0%, 50%)"
+              background="hsl(0, 0%, 16%)"
             />
           </StyledInputGroup>
           <LoginButton background={primary}>Sign In</LoginButton>
