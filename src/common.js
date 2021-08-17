@@ -1,19 +1,23 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const Input = styled.input.attrs(props => ({
-  type: props.type = 'text',
-  size: props.size = '.7rem',
-  border: props.border = "1px solid hsl(0, 0%, 50%)",
-  background: props.background
+export const Input = styled.input.attrs((props) => ({
+  type: (props.type = "text"),
+  border: props.border,
+  background: props.background,
+  color: props.color,
+  backgroundFocus: props.backgroundFocus
+
 }))`
-padding: ${({ size }) => size};
-border: ${({ border }) => border};
-background-color: ${({ background }) => background ? background : "hsl(0, 0%, 100%)"};
-color: white;
-border-radius: .25rem;
-&:focus {
-outline: none;
-box-shadow: 0 0 0 1px hsl(0, 0%, 16%);
-background-color: hsl(0, 0%, 20%);
-}
-`
+  padding: 0.7rem;
+  border: none;
+  background-color: ${({ background }) =>
+    background ? background : "white"};
+  color: ${({ color }) => (color ? color : 'white')};
+  border-radius: 0.25rem;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px hsl(0, 0%, 16%);
+    background-color: ${({ backgroundFocus }) => backgroundFocus ? backgroundFocus : 'hsl(0, 0%, 20%)'};
+    border: 1px solid hsl(0, 0%, 50%);
+  }
+`;

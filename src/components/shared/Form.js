@@ -20,26 +20,18 @@ const Form = () => {
         <Stack as="form" gutter="lg">
           <Title title="The Sweet Doggo" color={textLight}></Title>
           <StyledInputGroup color={textLightShade} label="User Name">
-            <Input
-              type="text"
-              size=".7rem"
-              border="1px solid hsl(0, 0%, 50%)"
-              background="hsl(0, 0%, 16%)"
-            />
+            <Input type="text" size=".7rem" background="hsl(0, 0%, 16%)" />
           </StyledInputGroup>
           <StyledInputGroup color={textLightShade} label="Password">
-            <Input
-              type="text"
-              size=".7rem"
-              border="1px solid hsl(0, 0%, 50%)"
-              background="hsl(0, 0%, 16%)"
-            />
+            <Input type="text" size=".7rem" background="hsl(0, 0%, 16%)" />
           </StyledInputGroup>
-          <LoginButton background={primary}>Sign In</LoginButton>
+          <LoginButton background={primary} color="white">
+            Sign In
+          </LoginButton>
           <InLine stretch={0}>
-            <AccountText>Forgot Password?</AccountText>
+            <AccountText color="white">Forgot Password?</AccountText>
             <Link to="/accounts/signup">
-              <AccountText>No account? Sign Up</AccountText>
+              <AccountText color="white">No account? Sign Up</AccountText>
             </Link>
           </InLine>
         </Stack>

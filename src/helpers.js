@@ -45,12 +45,13 @@ export const landingStyle = {
 
 export const colors = {
       backgroundDark: 'hsl(0, 0%, 26%)',
-      backgroundLight: 'hsl(0, 0%, 96%)',
+      backgroundLight: 'hsl(0, 0%, 86%)',
       textLight: 'hsl(0, 0%, 100%)',
       textLightShade: 'hsl(0, 0%, 90%)',
       textDark: 'hsl(0, 0%, 20%)',
       textDarkShade: 'hsl(0, 0%, 25%)',
       primary: 'hsl(214, 94%, 63%)',
+     
 }
 
 export const InputGroup = ({ label, children, className }) => {
@@ -72,18 +73,10 @@ export const Hidden = styled.div`
   }
 `;
 
-export const LoginButton = styled.button.attrs(() => ({
-  as: "button",
-  padding: ["md", "lg"]
-}))`
-border: none;
-border-radius: 0.25rem;
-background: ${({ background }) => background};
-color: ${({ color }) => color};
-`;
+
 
 export const AccountText = styled.p`
-color: hsl(214, 94%, 63%);
+color: ${({ color}) => color ? color : 'hsl(0, 0%, 20%)'};
 `;
 
 export const LandingSplit = styled.div`
@@ -270,4 +263,17 @@ export const Cover = styled.div.attrs(({ children, top, bottom }) => {
   > [data-cover-child] {
     align-self: center;
   }
+`;
+
+export const LoginButton = styled(PadBox).attrs(() => ({
+  as: "button",
+  padding: ["md", "lg"]
+}))`
+border: none;
+border-radius: 0.25rem;
+background: ${({ background }) => background};
+color: ${({ color }) => color};
+&:hover {
+background-color: hsl(214, 94%, 53%);
+}
 `;

@@ -22,8 +22,8 @@ function SignUp() {
         display: "grid",
       }}
     >
-      <div style={{ maxWidth: '500px', width: '100%', margin: "auto" }}>
-        <PadBox as="section" padding="lg">
+      <div style={{ maxWidth: "500px", width: "100%", margin: "auto" }}>
+        <PadBox style={{ background: 'white', borderRadius: '5px', boxShadow: '0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)'}} as="section" padding="lg">
           <Stack as="form" gutter="lg">
             <Title title="The Sweet Doggo" color={textDark}></Title>
             <StyledInputGroup color={textDarkShade} label="User Name">
@@ -31,7 +31,8 @@ function SignUp() {
                 type="text"
                 size=".7rem"
                 border="1px solid hsl(0, 0%, 50%)"
-                background="white"
+                background="hsl(0, 0%, 80%)"
+                backgroundFocus="hsl(0, 0%, 60%)"
               />
             </StyledInputGroup>
             <StyledInputGroup color={textDarkShade} label="Password">
@@ -39,14 +40,15 @@ function SignUp() {
                 type="text"
                 size=".7rem"
                 border="1px solid hsl(0, 0%, 50%)"
-                background="white"
+                background="hsl(0, 0%, 80%)"
+                backgroundFocus="hsl(0, 0%, 60%)"
               />
             </StyledInputGroup>
-            <LoginButton background={primary}>Sign In</LoginButton>
+            <LoginButton background={primary} color="white">Sign Up</LoginButton>
             <InLine stretch={0}>
               <AccountText>Forgot Password?</AccountText>
-              <Link to="/accounts/signup">
-                <AccountText>No account? Sign Up</AccountText>
+              <Link to="/accounts/login">
+                <AccountText>Have account? Sign In</AccountText>
               </Link>
             </InLine>
           </Stack>
