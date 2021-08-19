@@ -1,6 +1,6 @@
 import React from "react";
 import { LandingSplit, Cover, Hidden } from "../helpers";
-import Form from "../components/shared/Form";
+import LandingForm from "../components/shared/LandingForm";
 import { colors, landingStyle } from '../helpers'
 
 const Landing = () => {
@@ -14,7 +14,7 @@ const Landing = () => {
           <img aria-label="dog sitting on bed" style={landingStyle} />
         </Hidden>
         <Cover style={{ backgroundColor: backgroundDark }}>
-          <Form />
+          <LandingForm />
         </Cover>
       </LandingSplit>
     </>

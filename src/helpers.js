@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/macro";
-import dog from "./images/dogs-2.jpg"
+import dog from "./images/dogs-2.jpg";
 
 const spacingMap = {
   xs: "0.125rem",
@@ -44,15 +44,14 @@ export const landingStyle = {
 };
 
 export const colors = {
-      backgroundDark: 'hsl(0, 0%, 26%)',
-      backgroundLight: 'hsl(0, 0%, 86%)',
-      textLight: 'hsl(0, 0%, 100%)',
-      textLightShade: 'hsl(0, 0%, 90%)',
-      textDark: 'hsl(0, 0%, 20%)',
-      textDarkShade: 'hsl(0, 0%, 25%)',
-      primary: 'hsl(214, 94%, 63%)',
-     
-}
+  backgroundDark: "hsl(0, 0%, 26%)",
+  backgroundLight: "hsl(0, 0%, 86%)",
+  textLight: "hsl(0, 0%, 100%)",
+  textLightShade: "hsl(0, 0%, 90%)",
+  textDark: "hsl(0, 0%, 20%)",
+  textDarkShade: "hsl(0, 0%, 25%)",
+  primary: "hsl(214, 94%, 63%)",
+};
 
 export const InputGroup = ({ label, children, className }) => {
   return (
@@ -64,7 +63,7 @@ export const InputGroup = ({ label, children, className }) => {
 };
 
 export const StyledInputGroup = styled(InputGroup)`
-  color: ${({ color}) => color};
+  color: ${({ color }) => color};
 `;
 
 export const Hidden = styled.div`
@@ -73,23 +72,33 @@ export const Hidden = styled.div`
   }
 `;
 
+export const PageWrapper = styled.div`
+  background-color: hsl(0, 0%, 86%);
+  height: 100vh;
+  display: grid;
+  padding: 0 20px;
+`;
 
+export const AuthWrapper = styled.div`
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+`;
 
 export const AccountText = styled.p`
-color: ${({ color}) => color ? color : 'hsl(0, 0%, 20%)'};
+  color: ${({ color }) => (color ? color : "hsl(0, 0%, 20%)")};
 `;
 
 export const LandingSplit = styled.div`
-display: grid;
+  display: grid;
   gap: ${({ gutter }) => (gutter ? spacingMap[gutter] : "none")};
   grid-template-columns: ${({ fraction }) =>
     fractions[fraction] ?? fractions["1/2"]};
 
-    @media only screen and (max-width: 800px) {
-      grid-template-columns: 1fr;
-    }
-`
-
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 export const Stack = styled.div`
   display: grid;
@@ -267,13 +276,13 @@ export const Cover = styled.div.attrs(({ children, top, bottom }) => {
 
 export const LoginButton = styled(PadBox).attrs(() => ({
   as: "button",
-  padding: ["md", "lg"]
+  padding: ["md", "lg"],
 }))`
-border: none;
-border-radius: 0.25rem;
-background: ${({ background }) => background};
-color: ${({ color }) => color};
-&:hover {
-background-color: hsl(214, 94%, 53%);
-}
+  border: none;
+  border-radius: 0.25rem;
+  background: ${({ background }) => background};
+  color: ${({ color }) => color};
+  &:hover {
+    background-color: hsl(214, 94%, 53%);
+  }
 `;
