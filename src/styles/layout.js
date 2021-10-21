@@ -1,70 +1,6 @@
 import styled, { css } from "styled-components/macro";
-import dog from "./images/dogs-2.jpg";
-
-const spacingMap = {
-  xs: "0.125rem",
-  sm: "0.25rem",
-  md: "0.5rem",
-  lg: "1rem",
-  xl: "2rem",
-  xxl: "4rem",
-};
-
-const fractions = {
-  "1/1": "1fr 1fr",
-  "1/4": "1fr 4fr",
-  "4/2": "4fr 2fr",
-  "1/3": "1fr 3fr",
-  "1/2": "1fr 2fr",
-  "2/3": "2fr 3fr",
-  "3/4": "3fr 4fr",
-  "auto-start": "auto 1fr",
-  "auto-end": "1fr auto",
-};
-
-const justifyAlignMap = {
-  start: "flex-start",
-  end: "flex-end",
-  center: "center",
-};
-
-const stretchMap = {
-  all: `> * { flex: 1}`,
-  start: `> :first-child { flex: 1}`,
-  end: `> :last-child { flex: 1}`,
-};
-
-export const landingStyle = {
-  width: "100%",
-  height: "100vh",
-  backgroundImage: `url(${dog})`,
-  backgroundPosition: "center",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-};
-
-export const colors = {
-  backgroundDark: "hsl(0, 0%, 26%)",
-  backgroundLight: "hsl(0, 0%, 86%)",
-  textLight: "hsl(0, 0%, 100%)",
-  textLightShade: "hsl(0, 0%, 90%)",
-  textDark: "hsl(0, 0%, 20%)",
-  textDarkShade: "hsl(0, 0%, 25%)",
-  primary: "hsl(214, 94%, 63%)",
-};
-
-export const InputGroup = ({ label, children, className }) => {
-  return (
-    <Stack className={className} as="label" gutter="sm">
-      {label}
-      {children}
-    </Stack>
-  );
-};
-
-export const StyledInputGroup = styled(InputGroup)`
-  color: ${({ color }) => color};
-`;
+import { spacingMap, fractions, justifyAlignMap, stretchMap } from "./constants";
+import dog from "../images/dogs-2.jpg";
 
 export const Hidden = styled.div`
   @media (max-width: 800px) {
@@ -85,9 +21,14 @@ export const AuthWrapper = styled.div`
   margin: auto;
 `;
 
-export const AccountText = styled.p`
-  color: ${({ color }) => (color ? color : "hsl(0, 0%, 20%)")};
-`;
+export const landingStyle = {
+  width: "100%",
+  height: "100vh",
+  backgroundImage: `url(${dog})`,
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+};
 
 export const LandingSplit = styled.div`
   display: grid;
@@ -175,13 +116,13 @@ export const PadBox = styled.div`
   }};
 `;
 
-export const Button = styled(PadBox).attrs(() => ({
-  as: "button",
-  padding: ["sm", "xl"],
+export const StyledPadBox = styled(PadBox).attrs(() => ({
+  as: "section",
+  padding: "lg",
 }))`
-  background: black;
-  color: white;
-  border: none;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 `;
 
 export const Center = styled.div`
@@ -271,18 +212,5 @@ export const Cover = styled.div.attrs(({ children, top, bottom }) => {
 
   > [data-cover-child] {
     align-self: center;
-  }
-`;
-
-export const LoginButton = styled(PadBox).attrs(() => ({
-  as: "button",
-  padding: ["md", "lg"],
-}))`
-  border: none;
-  border-radius: 0.25rem;
-  background: ${({ background }) => background};
-  color: ${({ color }) => color};
-  &:hover {
-    background-color: hsl(214, 94%, 53%);
   }
 `;
