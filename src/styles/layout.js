@@ -214,3 +214,8 @@ export const Cover = styled.div.attrs(({ children, top, bottom }) => {
     align-self: center;
   }
 `;
+
+export const FormStyle = styled.form`
+display: grid;
+  gap: ${(props) => spacingMap[props.gutter] ?? spacingMap.lg};
+`

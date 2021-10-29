@@ -1,6 +1,6 @@
 import React from "react";
-import { LandingSplit, Cover, Hidden, PadBox, InLine } from "../styles/layout";
-import Form from "../components/shared/Form";
+import { LandingSplit, Cover, Hidden, PadBox, InLine, FormStyle } from "../styles/layout";
+
 import {
   StyledInputGroup,
   LoginButton,
@@ -8,10 +8,18 @@ import {
 } from "../styles/common";
 import { colors } from '../styles/constants'
 import { landingStyle } from '../styles/layout'
-import { Input } from "../styles/common";
+import { Input, Title } from "../styles/common";
 import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+
 
 const Landing = () => {
+const { register, handleSubmit } = useForm()
+
+ const onFormSubmit = (data) => {
+   console.log(data)
+ }
+
   const {
     backgroundDark,
     primary,
@@ -27,9 +35,11 @@ const Landing = () => {
         </Hidden>
         <Cover style={{ backgroundColor: backgroundDark }}>
           <PadBox as="section" padding="lg">
-            <Form titlecolor={textLight}>
+            <Title titlecolor={textLight}>The Sweet Doggo</Title>
+             <FormStyle onSubmit={handleSubmit(onFormSubmit)}>
               <StyledInputGroup color={textLightShade} label="User Name">
                 <Input
+                {...register("name")}
                   type="text"
                   size=".7rem"
                   backgroundFocus={backgroundFocus}
@@ -37,7 +47,8 @@ const Landing = () => {
               </StyledInputGroup>
               <StyledInputGroup color={textLightShade} label="Password">
                 <Input
-                  type="text"
+                {...register("password")}
+                  type="password"
                   size=".7rem"
                   backgroundFocus={backgroundFocus}
                 />
@@ -53,7 +64,7 @@ const Landing = () => {
                   </AccountText>
                 </Link>
               </InLine>
-            </Form>
+            </FormStyle>
           </PadBox>
         </Cover>
       </LandingSplit>
