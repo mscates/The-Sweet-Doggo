@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   StyledInputGroup,
@@ -9,7 +9,6 @@ import { PageWrapper, AuthWrapper, InLine, StyledPadBox, FormStyle } from "../st
 import { colors } from '../styles/constants'
 import { Input, Title } from "../styles/common";
 import { Link } from "react-router-dom";
-
 import { useForm } from 'react-hook-form'
 
 
@@ -19,7 +18,7 @@ function Signup({ setUsers, users }) {
    const onFormSubmit = (data) => {
       setUsers([...users, {
         email: data.email,
-        username: data.username,
+        name: data.name,
         password: data.password
       }])
 
@@ -35,17 +34,18 @@ function Signup({ setUsers, users }) {
            <FormStyle onSubmit={handleSubmit(onFormSubmit)}>
             <StyledInputGroup color={textDarkShade} label="Email">
               <Input
-              {...register("email", { required: true})}
+              {...register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i})}
                 type="text"
                 size=".7rem"
                 background={backgroundLight}
                 backgroundFocus={backgroundFocus}
               />
-              {errors.email && "Email is required"}
+              {errors.email?.type === 'required' && "Email is required"}
+              {errors.email?.type === 'pattern' && "Email is invalid"}
             </StyledInputGroup>
             <StyledInputGroup color={textDarkShade} label="User Name">
               <Input
-              {...register("username", { required: true})}
+              {...register("name", { required: true})}
                 type="text"
                 size=".7rem"
                 background={backgroundLight}

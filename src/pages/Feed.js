@@ -1,12 +1,15 @@
 import React from 'react';
 import Layout from '../components/shared/Layout';
+import DogPostList from '../components/DogPostList';
 
-const Feed = () => {
-    return ( <>
+const Feed = ({ dogPosts }) => {
+    return ( 
+    <>
     <Layout>
-        <p>Feed Page</p>
+        <DogPostList dogPosts={dogPosts} />
     </Layout>
-    </> );
+    </> 
+    );
 }
  
 export default Feed;

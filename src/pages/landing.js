@@ -1,5 +1,5 @@
-import React from "react";
-import { LandingSplit, Cover, Hidden, PadBox, InLine, FormStyle } from "../styles/layout";
+import React, { useState } from "react";
+import { LandingSplit, Cover, Hidden, PadBox, InLine } from "../styles/layout";
 
 import {
   StyledInputGroup,
@@ -7,17 +7,25 @@ import {
   AccountText,
 } from "../styles/common";
 import { colors } from '../styles/constants'
-import { landingStyle } from '../styles/layout'
+import { landingStyle, FormStyle } from '../styles/layout'
 import { Input, Title } from "../styles/common";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 
 
-const Landing = () => {
+const Landing = ({users}) => {
+  const history = useHistory()
 const { register, handleSubmit } = useForm()
+const [showMessage, setShowMessage] = useState(false)
 
  const onFormSubmit = (data) => {
-   console.log(data)
+   console.log(data, users)
+    users.map(user => {
+     if(user.name === data.name && user.password === data.password) {
+      history.push("/feed")
+     } else 
+    setShowMessage(true)
+   })
  }
 
   const {
@@ -34,12 +42,13 @@ const { register, handleSubmit } = useForm()
           <img aria-label="dog sitting on bed" style={landingStyle} />
         </Hidden>
         <Cover style={{ backgroundColor: backgroundDark }}>
+          {showMessage && 'Username or password are incorrect'}
           <PadBox as="section" padding="lg">
             <Title titlecolor={textLight}>The Sweet Doggo</Title>
              <FormStyle onSubmit={handleSubmit(onFormSubmit)}>
               <StyledInputGroup color={textLightShade} label="User Name">
                 <Input
-                {...register("name")}
+                {...register("name", { required: true })}
                   type="text"
                   size=".7rem"
                   backgroundFocus={backgroundFocus}
@@ -47,15 +56,17 @@ const { register, handleSubmit } = useForm()
               </StyledInputGroup>
               <StyledInputGroup color={textLightShade} label="Password">
                 <Input
-                {...register("password")}
+                {...register("password", { required: true })}
                   type="password"
                   size=".7rem"
                   backgroundFocus={backgroundFocus}
                 />
               </StyledInputGroup>
+           
               <LoginButton background={primary} color="white">
                 Login
               </LoginButton>
+           
               <InLine stretch={0}>
                 <AccountText color={textLight}>Forgot Password?</AccountText>
                 <Link to={`/accounts/signup`}>

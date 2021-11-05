@@ -19,6 +19,7 @@ export const spacingMap = {
 };
 
 export const fractions = {
+  "1/5": "1fr 5fr",
   "1/1": "1fr 1fr",
   "1/4": "1fr 4fr",
   "4/2": "4fr 2fr",
