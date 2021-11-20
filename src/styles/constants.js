@@ -1,12 +1,17 @@
-export const colors = {
-  backgroundDark: "hsl(0, 0%, 26%)",
-  backgroundLight: "hsl(0, 0%, 86%)",
-  backgroundFocus: "hsl(0, 0%, 90%)",
-  textLight: "hsl(0, 0%, 100%)",
-  textLightShade: "hsl(0, 0%, 90%)",
-  textDark: "hsl(0, 0%, 20%)",
-  textDarkShade: "hsl(0, 0%, 25%)",
+export const siteColors = {
   primary: "hsl(214, 94%, 63%)",
+  gray0: "hsl(0, 0%, 100%)",
+  gray1: "hsl(0, 0%, 93%)",
+  gray2: "hsl(0, 0%, 87%)",
+  gray3: "hsl(0, 0%, 80%)",
+  gray4: "hsl(0, 0%, 73%)",
+  gray5: "hsl(0, 0%, 64%)",
+  gray6: "hsl(0, 0%, 55%)",
+  gray7: "hsl(0, 0%, 47%)",
+  gray8: "hsl(0, 0%, 38%)",
+  gray9: "hsl(0, 0%, 32%)",
+  gray10: "hsl(0, 0%, 24%)",
+  gray11: "hsl(0, 0%, 15%)",
 };
 
 export const spacingMap = {

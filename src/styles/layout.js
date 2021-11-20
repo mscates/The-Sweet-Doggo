@@ -1,9 +1,45 @@
 import styled, { css } from "styled-components/macro";
-import { spacingMap, fractions, justifyAlignMap, stretchMap } from "./constants";
+import {
+  spacingMap,
+  fractions,
+  justifyAlignMap,
+  stretchMap,
+  siteColors,
+} from "./constants";
 import dog from "../images/dogs-2.jpg";
 
 export const Hidden = styled.div`
   @media (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const LogoStyle = styled.div`
+  padding: 12px;
+  margin-top: auto;
+  color: #999;
+  white-space: nowrap;
+  padding-left: 130px;
+  position: relative;
+  background: radial-gradient(
+    90px 25px at 200px bottom,
+    #666, #222
+  );
+  strong {
+    color: white;
+  }
+
+`
+
+export const HiddenNav = styled.div`
+  text-align: center;
+  position: sticky;
+  top: 0;
+  
+  background: ${({ color }) => siteColors[color]};
+  height: 100vh;
+
+  @media (max-width: 600px) {
     display: none;
   }
 `;
@@ -37,6 +73,17 @@ export const LandingSplit = styled.div`
     fractions[fraction] ?? fractions["1/2"]};
 
   @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const FeedSplit = styled.div`
+  display: grid;
+  gap: ${({ gutter }) => (gutter ? spacingMap[gutter] : "none")};
+  grid-template-columns: ${({ fraction }) =>
+    fractions[fraction] ?? fractions["1/2"]};
+
+  @media only screen and (max-width: 600px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -84,11 +131,13 @@ export const InLineCluster = styled.div`
     justifyAlignMap[align] ?? justifyAlignMap.start};
 `;
 
-export const InLine = styled(InLineCluster)`
+export const InLine = styled(InLineCluster)
+  `
   flex-wrap: nowrap;
   ${({ stretch }) => {
     if (typeof stretch === "number")
-      return `> :nth-child(${stretch + 1}) { flex: 1}`;
+      return ` >: nth - child($ { stretch + 1 }) { flex: 1 }
+`;
 
     return stretchMap[stretch] ?? "";
   }}
@@ -97,7 +146,9 @@ export const InLine = styled(InLineCluster)`
 
 const responsive = css`
   --switchAt: ${({ switchAt }) =>
-    typeof switchAt === "string" ? switchAt : `${switchAt}px`};
+    typeof switchAt === "string" ? switchAt : `
+$ { switchAt }
+px `};
 
   flex-wrap: wrap;
 
@@ -119,10 +170,19 @@ export const PadBox = styled.div`
 export const StyledPadBox = styled(PadBox).attrs(() => ({
   as: "section",
   padding: "lg",
-}))`
+}))
+  `
   background: white;
   border-radius: 5px;
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+`;
+
+export const MainPadBox = styled(PadBox).attrs(() => ({
+  as: "section",
+  padding: "lg",
+}))
+  `
+  background: hsl(0, 0%, 90%);
 `;
 
 export const Center = styled.div`
@@ -136,8 +196,8 @@ export const Center = styled.div`
     centerChildren &&
     `
 display: flex;
-flex-direction: column;
-align-items: center;
+flex - direction: column;
+align - items: center;
 `}
 `;
 
@@ -145,7 +205,8 @@ export const AppStyles = styled(PadBox).attrs(() => ({
   as: Center,
   padding: ["none", "sm"],
   maxWidth: "85rem",
-}))`
+}))
+  `
   font-family: sans-serif;
 `;
 
@@ -158,9 +219,11 @@ export const Frame = styled.div`
   ${({ ratio }) =>
     ratio &&
     `
-aspect-ratio: var(--n) / var(--d);
-@supports not (aspect-ratio: 1/1) {
-  padding-bottom: calc(var(--d) / var(--n) * 100%);
+aspect - ratio: var (--n) /
+    var (--d);
+@supports not(aspect - ratio: 1 / 1) {
+    padding - bottom: calc(var (--d) /
+        var (--n) * 100 % );
 }
 `}
 
@@ -188,34 +251,32 @@ aspect-ratio: var(--n) / var(--d);
 
 export const Cover = styled.div.attrs(({ children, top, bottom }) => {
   return {
-    children: (
-      <>
-        {top && <div>{top}</div>}
-        <div data-cover-child>{children}</div>
-        {bottom && <div>{bottom}</div>}
-      </>
+    children: (<> {
+      top && <div> {top} </div>} <div data-cover-child> {children} </div> {
+        bottom && <div> {bottom} </div>} </>
     ),
   };
-})`
-  display: grid;
-  gap: ${({ gutter }) => gutter ?? spacingMap.lg};
-  min-block-size: ${({ minHeight }) => minHeight ?? "100vh"};
+})
+  `
+              display: grid;
+              gap: ${({ gutter }) => gutter ?? spacingMap.lg};
+              min-block-size: ${({ minHeight }) => minHeight ?? "100vh"};
 
-  grid-template-rows: ${({ top, bottom }) =>
+              grid-template-rows: ${({ top, bottom }) =>
     top && bottom
       ? "auto 1fr auto"
       : top
-      ? "auto 1fr"
-      : bottom
-      ? "1fr auto"
-      : "1fr"};
+        ? "auto 1fr"
+        : bottom
+          ? "1fr auto"
+          : "1fr"};
 
   > [data-cover-child] {
-    align-self: center;
+                align-self: center;
   }
-`;
+              `;
 
 export const FormStyle = styled.form`
-display: grid;
-  gap: ${(props) => spacingMap[props.gutter] ?? spacingMap.lg};
-`
+              display: grid;
+              gap: ${(props) => spacingMap[props.gutter] ?? spacingMap.lg};
+              `;
